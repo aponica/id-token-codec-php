@@ -1,6 +1,6 @@
 {
   "name": "aponica/id-token-codec-php",
-  "version": "3.0.1",
+  "version": "4.0.0",
   "description": "Encode/decode IDs and a token to/from a string.",
   "homepage" : "https://aponica.com/docs/id-token-codec-php",
   "funding": [ { "type": "paypal",
@@ -22,13 +22,11 @@
   },
   "autoload": {
     "files": [
-      "src/fanDecodeIds.php",
-      "src/fhDecode.php",
-      "src/fhDecodeIdsAndToken.php",
-      "src/fzEncode.php",
-      "src/fzEncodeIds.php",
-      "src/zBase62Chars.php"
+      "src/cIdTokenCodec.php"
     ],
     "psr-4": {"Aponica\\IdTokenCodec\\": "src"}
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^9.5"
   }
 }
