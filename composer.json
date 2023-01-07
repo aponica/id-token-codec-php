@@ -1,6 +1,6 @@
 {
   "name": "aponica/id-token-codec-php",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "description": "Encode/decode IDs and a token to/from a string.",
   "homepage" : "https://aponica.com/docs/id-token-codec-php",
   "funding": [ { "type": "paypal",
