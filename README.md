@@ -81,7 +81,7 @@ of programming experience.
 
 ## Copyright
 
-Copyright 2018-2022 Opplaud LLC and other contributors.
+Copyright 2018-2023 Opplaud LLC and other contributors.
 
 ## License
 
