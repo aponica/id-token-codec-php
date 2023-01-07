@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 //=============================================================================
-//  Copyright 2018-2022 Opplaud LLC and other contributors. MIT licensed.
+//  Copyright 2018-2023 Opplaud LLC and other contributors. MIT licensed.
 //=============================================================================
 
 namespace Aponica\IdTokenCodec;
@@ -32,7 +32,7 @@ function fhDecode( string $zEncoded ) : array {
       $nResult = ( $nResult * 62 ) +
         strpos( zBase62Chars, mb_substr( $zBase62, $nIndex, 1 ) );
 
-    return $nResult;
+    return intval( $nResult );
 
     }; // $fnFromBase62
 
