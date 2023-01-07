@@ -23,39 +23,36 @@ composer install aponica/id-token-codec-php
 ### Example 1: Encode/decode a single ID w/ token
 
 ```php
-use function Aponica\IdTokenCodec\fzEncode;
-use function Aponica\IdTokenCodec\fhDecode;
+use Aponica\IdTokenCodec\cIdTokenCodec;
 
-$zKey = fzEncode( 12345, 'Hello' ); 
+$zKey = cIdTokenCodec::fzEncode( 12345, 'Hello' ); 
 // '3Hello3D7'
 
-$hResult = fhDecode( $zKey ); 
+$hResult = cIdTokenCodec::fhDecode( $zKey ); 
 // [ 'nId' => 12345, 'zToken' => 'Hello' ]
 ```
 
 ### Example 2: Encode/decode multiple IDs w/ token
 
 ```php
-use function Aponica\IdTokenCodec\fzEncodeIds;
-use function Aponica\IdTokenCodec\fhDecodeIdsAndToken;
+use Aponica\IdTokenCodec\cIdTokenCodec;
 
-$zKey = fzEncodeIds( [ 12, 34, 56 ], 'FOO' ); 
+$zKey = cIdTokenCodec::fzEncodeIds( [ 12, 34, 56 ], 'FOO' ); 
 // '1110FOOCYu'
 
-$hResult = fhDecodeIdsAndToken( $zKey );
+$hResult = cIdTokenCodec::fhDecodeIdsAndToken( $zKey );
 // [ 'anIds' => [ 12, 34, 56 ], 'zToken' => 'FOO' ]
 ```
 
 ### Example 3: Ignore random token
 
 ```php
-use function Aponica\IdTokenCodec\fzEncodeIds;
-use function Aponica\IdTokenCodec\fanDecodeIds;
+use Aponica\IdTokenCodec\cIdTokenCodec;
 
-$zKey = fzEncodeIds( [ 12, 34 ] ); 
+$zKey = cIdTokenCodec::fzEncodeIds( [ 12, 34 ] ); 
 // something like '1109fe129386b5a9c1d5bCY'
 
-$anResult = fanDecodeIds( $zKey );
+$anResult = cIdTokenCodec::fanDecodeIds( $zKey );
 // [ 12, 34 ]
 ```
 
