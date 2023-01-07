@@ -4,7 +4,7 @@
 //=============================================================================
 
 use PHPUnit\Framework\TestCase;
-use function Aponica\IdTokenCodec\fhDecode;
+use Aponica\IdTokenCodec\cIdTokenCodec;
 
 final class fhDecodeTest extends TestCase {
 
@@ -12,7 +12,7 @@ final class fhDecodeTest extends TestCase {
 
   public function testMinOneDigitId() : void {
 
-    $zResult = fhDecode( '1one1' );
+    $zResult = cIdTokenCodec::fhDecode( '1one1' );
 
     $this->assertEquals( 1, $zResult[ 'nId' ] );
 
@@ -24,7 +24,7 @@ final class fhDecodeTest extends TestCase {
 
   public function testMaxOneDigitId() : void {
 
-    $zResult = fhDecode( '1onez' );
+    $zResult = cIdTokenCodec::fhDecode( '1onez' );
 
     $this->assertEquals( 61, $zResult[ 'nId' ] );
 
@@ -36,7 +36,7 @@ final class fhDecodeTest extends TestCase {
 
   public function testMinThreeDigitId() : void {
 
-    $zResult = fhDecode( '3three100' );
+    $zResult = cIdTokenCodec::fhDecode( '3three100' );
 
     $this->assertEquals( 3844, $zResult[ 'nId' ] );
 
@@ -48,7 +48,7 @@ final class fhDecodeTest extends TestCase {
 
   public function testMaxThreeDigitId() : void {
 
-    $zResult = fhDecode( '3threezzz' );
+    $zResult = cIdTokenCodec::fhDecode( '3threezzz' );
 
     $this->assertEquals( 238327, $zResult[ 'nId' ] );
 

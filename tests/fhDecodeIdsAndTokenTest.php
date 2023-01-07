@@ -4,7 +4,7 @@
 //=============================================================================
 
 use PHPUnit\Framework\TestCase;
-use function Aponica\IdTokenCodec\fhDecodeIdsAndToken;
+use Aponica\IdTokenCodec\cIdTokenCodec;
 
 final class fhDecodeIdsAndTokenTest extends TestCase {
 
@@ -12,7 +12,7 @@ final class fhDecodeIdsAndTokenTest extends TestCase {
 
   public function testMinOneOneDigitIds() : void {
 
-    $zResult = fhDecodeIdsAndToken( '10one1' );
+    $zResult = cIdTokenCodec::fhDecodeIdsAndToken( '10one1' );
 
     $this->assertEquals( 1, count( $zResult[ 'anIds' ] ) );
 
@@ -26,7 +26,7 @@ final class fhDecodeIdsAndTokenTest extends TestCase {
 
   public function testMaxOneOneDigitIds() : void {
 
-    $zResult = fhDecodeIdsAndToken( '10onez' );
+    $zResult = cIdTokenCodec::fhDecodeIdsAndToken( '10onez' );
 
     $this->assertEquals( 1, count( $zResult[ 'anIds' ] ) );
 
@@ -40,7 +40,7 @@ final class fhDecodeIdsAndTokenTest extends TestCase {
 
   public function testMinThreeThreeDigitIds() : void {
 
-    $zResult = fhDecodeIdsAndToken( '3330three100100100' );
+    $zResult = cIdTokenCodec::fhDecodeIdsAndToken( '3330three100100100' );
 
     $this->assertEquals( 3, count( $zResult[ 'anIds' ] ) );
 
@@ -55,7 +55,7 @@ final class fhDecodeIdsAndTokenTest extends TestCase {
 
   public function testMaxThreeThreeDigitIds() : void {
 
-    $zResult = fhDecodeIdsAndToken( '3330threezzzzzzzzz' );
+    $zResult = cIdTokenCodec::fhDecodeIdsAndToken( '3330threezzzzzzzzz' );
 
     $this->assertEquals( 3, count( $zResult[ 'anIds' ] ) );
 
@@ -70,7 +70,7 @@ final class fhDecodeIdsAndTokenTest extends TestCase {
 
   public function testOneTwoAndThreeDigitIds() : void {
 
-    $zResult = fhDecodeIdsAndToken( '1109fe129386b5a9c1d5bCY' );
+    $zResult = cIdTokenCodec::fhDecodeIdsAndToken( '1109fe129386b5a9c1d5bCY' );
 
     $this->assertEquals( 2, count( $zResult[ 'anIds' ] ) );
 
@@ -89,7 +89,7 @@ final class fhDecodeIdsAndTokenTest extends TestCase {
     $this->expectException( Exception::class );
     $this->expectExceptionMessage( 'invalid key' );
 
-    fhDecodeIdsAndToken( '321xK3Eq1o' );
+    cIdTokenCodec::fhDecodeIdsAndToken( '321xK3Eq1o' );
 
     } // testInvalidKey
 

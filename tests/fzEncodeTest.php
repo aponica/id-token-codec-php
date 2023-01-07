@@ -4,7 +4,7 @@
 //=============================================================================
 
 use PHPUnit\Framework\TestCase;
-use function Aponica\IdTokenCodec\fzEncode;
+use Aponica\IdTokenCodec\cIdTokenCodec;
 
 final class fzEncodeTest extends TestCase {
 
@@ -12,7 +12,7 @@ final class fzEncodeTest extends TestCase {
 
   public function testMinOneDigitId() : void {
 
-    $zResult = fzEncode( 0, 'one' );
+    $zResult = cIdTokenCodec::fzEncode( 0, 'one' );
 
     $this->assertEquals( '1one0', $zResult );
 
@@ -22,7 +22,7 @@ final class fzEncodeTest extends TestCase {
 
   public function testMaxOneDigitId() : void {
 
-    $zResult = fzEncode( 61, 'one' );
+    $zResult = cIdTokenCodec::fzEncode( 61, 'one' );
 
     $this->assertEquals( '1onez', $zResult );
 
@@ -32,7 +32,7 @@ final class fzEncodeTest extends TestCase {
 
   public function testMinThreeDigitId() : void {
 
-    $zResult = fzEncode( 3844, 'three' );
+    $zResult = cIdTokenCodec::fzEncode( 3844, 'three' );
 
     $this->assertEquals( '3three100', $zResult );
 
@@ -42,7 +42,7 @@ final class fzEncodeTest extends TestCase {
 
   public function testMaxThreeDigitId() : void {
 
-    $zResult = fzEncode( 238327, 'three' );
+    $zResult = cIdTokenCodec::fzEncode( 238327, 'three' );
 
     $this->assertEquals( '3threezzz', $zResult );
 

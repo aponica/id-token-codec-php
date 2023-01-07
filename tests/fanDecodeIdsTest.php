@@ -4,7 +4,7 @@
 //=============================================================================
 
 use PHPUnit\Framework\TestCase;
-use function Aponica\IdTokenCodec\fanDecodeIds;
+use Aponica\IdTokenCodec\cIdTokenCodec;
 
 final class fanDecodeIdsTest extends TestCase {
 
@@ -12,7 +12,7 @@ final class fanDecodeIdsTest extends TestCase {
 
   public function testOneTwoAndThreeDigitIds() : void {
 
-    $anIds = fanDecodeIds( '3210a1b2K3Eq1o' );
+    $anIds = cIdTokenCodec::fanDecodeIds( '3210a1b2K3Eq1o' );
 
     $this->assertEquals( 3, count( $anIds ) );
 
